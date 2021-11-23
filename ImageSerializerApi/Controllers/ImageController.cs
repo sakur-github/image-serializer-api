@@ -69,6 +69,9 @@ namespace ImageSerializerApi.Controllers
                         bytes[i] = byte.Parse(currentByteString);
                 }
 
+                if(bytes.Length < (body.Width / 8) * body.Height)
+                    return new ApiResponse("Width and height does not match amount of bytes provided", System.Net.HttpStatusCode.BadRequest);
+
                 Image image = new Image(bytes, body.Width, body.Height);
 
                 using (MemoryStream ms = new MemoryStream())
