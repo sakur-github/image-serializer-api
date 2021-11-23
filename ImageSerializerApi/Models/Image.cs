@@ -31,7 +31,7 @@ namespace ImageSerializerApi.Models
                 {
                     if (bitmap.Width > x && bitmap.Height > y)
                     {
-                        pixelData[x][y] = bitmap[x, y].G > 128 ? false : true;
+                        pixelData[x][y] = ((float)(bitmap[x, y].R + bitmap[x, y].G + bitmap[x, y].B) / 3f) > 128 ? false : true;
                     }
                 }
             }
