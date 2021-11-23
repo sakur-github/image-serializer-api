@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace ImageSerializerApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("")]
     public class ImageController : ControllerBase
     {
         [HttpPost("upload/file")]
