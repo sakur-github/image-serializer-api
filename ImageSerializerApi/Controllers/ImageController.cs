@@ -24,9 +24,14 @@ namespace ImageSerializerApi.Controllers
             try
             {
                 if (file == null)
-                    return new ApiResponse("Fil saknas", System.Net.HttpStatusCode.BadRequest);
+                    return new ApiResponse("File missing", System.Net.HttpStatusCode.BadRequest);
 
-                Image image = new Image(SixLabors.ImageSharp.Image.Load<Rgba32>(await InputFileHelper.GetRetrivaFileAsync(file)));
+                SixLabors.ImageSharp.Image<Rgba32> imageFile = SixLabors.ImageSharp.Image.Load<Rgba32>(await InputFileHelper.GetRetrivaFileAsync(file));
+
+                if(imageFile.Height % 8 != 0)
+                    return new ApiResponse("Height needs to be a multiple of 8", System.Net.HttpStatusCode.BadRequest);
+
+                Image image = new Image(imageFile);
 
                 StringBuilder stringBuilder = new StringBuilder();
                 byte[] bytes = image.Bytes;
@@ -37,7 +42,7 @@ namespace ImageSerializerApi.Controllers
                     stringBuilder.Append(", ");
                 }
 
-                return new ApiResponse(new { bytes = stringBuilder.ToString() });
+                return new ApiResponse(new { content = stringBuilder.ToString() });
             }
             catch (ApiException exception)
             {
