@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageSerializerApi", "ImageSerializerApi\ImageSerializerApi.csproj", "{4E5F8BF2-D45E-40FA-80F9-CE81FE68B596}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E5F8BF2-D45E-40FA-80F9-CE81FE68B596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5F8BF2-D45E-40FA-80F9-CE81FE68B596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5F8BF2-D45E-40FA-80F9-CE81FE68B596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5F8BF2-D45E-40FA-80F9-CE81FE68B596}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B2F43F2-C10F-47A3-8D55-1377F30D8959}
+	EndGlobalSection
+EndGlobal

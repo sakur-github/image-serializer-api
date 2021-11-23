@@ -1,0 +1,4 @@
+.vs/
+ImageSerializerApi/bin/*
+ImageSerializerApi/obj/*
+ImageSerializerApi/Properties/launchSettings.json
