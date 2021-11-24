@@ -19,7 +19,7 @@ namespace ImageSerializerApi.Controllers
     public class ImageController : ControllerBase
     {
         [HttpPost("upload/file")]
-        public async Task<ActionResult<object>> UploadFile(IFormFile file)
+        public async Task<ActionResult<object>> UploadFile(IFormFile file, bool smoothBrightness)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace ImageSerializerApi.Controllers
                 if(imageFile.Height % 8 != 0)
                     return new ApiResponse("Height needs to be a multiple of 8", System.Net.HttpStatusCode.BadRequest);
 
-                Image image = new Image(imageFile);
+                Image image = new Image(imageFile, smoothBrightness);
 
                 StringBuilder stringBuilder = new StringBuilder();
                 byte[] bytes = image.Bytes;

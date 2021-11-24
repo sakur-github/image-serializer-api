@@ -19,11 +19,16 @@ namespace ImageSerializerApi.Models
         public int Width { get; private set; }
         public int Height { get; private set; }
 
+        private static Random random;
+
         private bool[][] pixelData;
 
-        public Image(Image<Rgba32> bitmap)
+        public Image(Image<Rgba32> bitmap, bool smoothBrightness = false)
         {
             InitPixelData(bitmap.Width, bitmap.Height);
+
+            if (random == null)
+                random = new Random(1337);
 
             for (int y = 0; y < Height; y++)
             {
@@ -31,7 +36,7 @@ namespace ImageSerializerApi.Models
                 {
                     if (bitmap.Width > x && bitmap.Height > y)
                     {
-                        pixelData[x][y] = ((float)(bitmap[x, y].R + bitmap[x, y].G + bitmap[x, y].B) / 3f) > 128 ? false : true;
+                        pixelData[x][y] = GetBoolFromPixel(bitmap[x, y], smoothBrightness);
                     }
                 }
             }
@@ -66,6 +71,14 @@ namespace ImageSerializerApi.Models
 
                 scannedPixels += 8;
             }
+        }
+
+        private bool GetBoolFromPixel(Rgba32 pixelColor, bool smoothBrightness)
+        {
+            float brightness = ((float)pixelColor.R + pixelColor.G + pixelColor.B) / (3f * 255f);
+            if ((brightness < 0.9f && brightness > 0.1f) && smoothBrightness)
+                return (brightness * (brightness + 0.5f)) <= (random.NextDouble() * 0.8f) + 0.1f;
+            return brightness < 0.5f;
         }
 
         private void InitPixelData(int width = 128, int height = 32)
