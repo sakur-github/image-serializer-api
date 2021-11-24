@@ -86,5 +86,11 @@ namespace ImageSerializerApi.Controllers
                 return new ApiResponse(exception);
             }
         }
+
+        [HttpGet("ping")]
+        public async Task<ActionResult<object>> Ping()
+        {
+            return new ApiResponse("pong", System.Net.HttpStatusCode.OK);
+        }
     }
 }
