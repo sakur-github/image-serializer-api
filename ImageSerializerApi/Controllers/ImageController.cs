@@ -18,7 +18,7 @@ namespace ImageSerializerApi.Controllers
     [Route("")]
     public class ImageController : ControllerBase
     {
-        [HttpPost("upload/file")]
+        [HttpPost("serialize")]
         public async Task<ActionResult<object>> UploadFile(IFormFile file, bool smoothBrightness)
         {
             try
@@ -50,7 +50,7 @@ namespace ImageSerializerApi.Controllers
             }
         }
 
-        [HttpPost("upload/string")]
+        [HttpPost("deserialize")]
         public async Task<ActionResult<object>> UploadString(UploadStringBody body)
         {
             try
