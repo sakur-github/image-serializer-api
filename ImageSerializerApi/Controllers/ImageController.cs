@@ -40,6 +40,7 @@ namespace ImageSerializerApi.Controllers
                 {
                     stringBuilder.Append(bytes[i]);
                     stringBuilder.Append(", ");
+                    if ((1 + i) % 8 == 0) stringBuilder.AppendLine();
                 }
 
                 return new ApiResponse(new { content = stringBuilder.ToString() });
