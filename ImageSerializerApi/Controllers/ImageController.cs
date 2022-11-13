@@ -26,7 +26,7 @@ namespace ImageSerializerApi.Controllers
                 if (file == null)
                     return new ApiResponse("File missing", System.Net.HttpStatusCode.BadRequest);
 
-                SixLabors.ImageSharp.Image<Rgba32> imageFile = SixLabors.ImageSharp.Image.Load<Rgba32>(await InputFileHelper.GetRetrivaFileAsync(file));
+                SixLabors.ImageSharp.Image<Rgba32> imageFile = SixLabors.ImageSharp.Image.Load<Rgba32>(await InputFileHelper.GetFileAsync(file));
 
                 if(imageFile.Height % 8 != 0)
                     return new ApiResponse("Height needs to be a multiple of 8", System.Net.HttpStatusCode.BadRequest);

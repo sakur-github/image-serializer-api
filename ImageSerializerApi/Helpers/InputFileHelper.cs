@@ -9,7 +9,7 @@ namespace ImageSerializerApi.Helpers
 {
     public class InputFileHelper
     {
-        public static async Task<byte[]> GetRetrivaFileAsync(IFormFile inputFile)
+        public static async Task<byte[]> GetFileAsync(IFormFile inputFile)
         {
             byte[] bytes = new byte[inputFile.Length];
 
