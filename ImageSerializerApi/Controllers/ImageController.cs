@@ -19,7 +19,7 @@ namespace ImageSerializerApi.Controllers
     public class ImageController : ControllerBase
     {
         [HttpPost("serialize")]
-        public async Task<ActionResult<object>> UploadFile(IFormFile file, bool smoothBrightness)
+        public async Task<ActionResult<object>> UploadFile(IFormFile file, bool smoothBrightness, int lineLength = 8)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ImageSerializerApi.Controllers
                 {
                     stringBuilder.Append(bytes[i]);
                     stringBuilder.Append(", ");
-                    if ((1 + i) % 8 == 0) stringBuilder.Append("\n");
+                    if ((1 + i) % lineLength == 0) stringBuilder.Append("\n");
                 }
 
                 return new ApiResponse(new { content = stringBuilder.ToString() });
