@@ -1,6 +1,8 @@
 ## What
 This is the repository for the back-end of the site located at https://image-serializer.kthsalar.se
 
+The source code for the fron-end can be found here: https://github.com/sakur-github/image-serializer-frontend
+
 ## Who
 This code is written by Adam at Sakur Ab.
 
